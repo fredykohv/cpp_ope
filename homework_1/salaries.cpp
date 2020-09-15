@@ -1,6 +1,9 @@
 #include <iostream>
 #include <vector>
 
+namespace salaries
+{
+
 float eligible_salary_for_wage_increase;
 
 std::vector<float> salaries{1262.34, 871.21, 724.12, 2851.11, 2895.04, 125.3, 815.12, 1873.19};
@@ -20,10 +23,13 @@ int wage_increase()
     return 0;
 }
 
-int main()
+int main_salaries()
 {
     std::cout << "Set your eligible salary size in order to give your workers a 5% wage increase who earn less than your eligible salary size!" << std::endl;
     std::cin >> eligible_salary_for_wage_increase;
     
     wage_increase();
+
+    return 0;
+}
 }
