@@ -31,5 +31,6 @@ int main()
 {
     std::cout << "Enter the temperature!" << std::endl;
     std::cin >> temperature;
+    
     hot_cold_warm_temperature();
 }
