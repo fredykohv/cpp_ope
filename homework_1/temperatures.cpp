@@ -2,6 +2,9 @@
 #include <string>
 #include <vector>
 
+namespace temperatures
+{
+
 int temperature;
 int hot_temperature = 26;
 int cold_temperature = 9;
@@ -27,10 +30,13 @@ int hot_cold_warm_temperature()
     return 0;
 }
 
-int main()
+int main_temperatures()
 {
     std::cout << "Enter the temperature!" << std::endl;
     std::cin >> temperature;
     
     hot_cold_warm_temperature();
+
+    return 0;
+}
 }
