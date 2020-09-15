@@ -37,8 +37,10 @@ int circle_perimeter_function()
 int main()
 {
     std::cout << "Whats the radius of circle in order to calculate square side?" << std::endl;
+
     std::cin >> circle_radius;
     square_side = circle_radius * 2;
+    
     std::cout << "Circle radius is: " << circle_radius << "cm" << " and square side is: " << square_side << std::endl;
 
     square_area_function();
