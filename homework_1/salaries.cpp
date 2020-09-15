@@ -24,5 +24,6 @@ int main()
 {
     std::cout << "Set your eligible salary size in order to give your workers a 5% wage increase who earn less than your eligible salary size!" << std::endl;
     std::cin >> eligible_salary_for_wage_increase;
+    
     wage_increase();
 }
