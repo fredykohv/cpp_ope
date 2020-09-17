@@ -36,7 +36,10 @@ void wage_increase()
             for (int i = 0; i < salaries.size(); i++)
             {
                 std::cout << salaries[i] << std::endl;
+            }
 
+            for (int i = 0; i < salaries.size(); i++)
+            {
                 if (salaries[i] <= eligible_salary_for_wage_increase)
                 {
                     std::cout << "Your salary was: " << salaries[i] << " and you are eligible for a wage increase!" << std::endl;
