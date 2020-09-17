@@ -2,6 +2,6 @@
 
 namespace salaries
 {
-   int wage_increase();
+   void wage_increase();
    int main_salaries();
 }
