@@ -7,10 +7,14 @@ namespace circle_square
 
 int circle_radius;
 int square_side;
+int square_area;
+int square_perimeter;
+float circle_area;
+float circle_perimeter;
 
 int square_area_function()
 {
-    int square_area = pow(square_side, 2.0);
+    square_area = pow(square_side, 2.0);
     std::cout << "Square area is: " << square_area << "cm²" << std::endl;
     return square_area;
 }
@@ -18,21 +22,21 @@ int square_area_function()
 int square_perimeter_function()
 {
 
-    int square_perimeter = square_side * 4;
+    square_perimeter = square_side * 4;
     std::cout << "Square perimeter is: " << square_perimeter << "cm" << std::endl;
     return square_perimeter;
 }
 
-int circle_area_function()
+float circle_area_function()
 {
-    float circle_area = pow(circle_radius, 2.0) * M_PI;
+    circle_area = pow(circle_radius, 2.0) * M_PI;
     std::cout << "Circle area is: " << circle_area << "cm²" << std::endl;
     return circle_area;
 }
 
-int circle_perimeter_function()
+float circle_perimeter_function()
 {
-    float circle_perimeter = 2 * M_PI * circle_radius;
+    circle_perimeter = 2 * M_PI * circle_radius;
     std::cout << "Circle perimeter is: " << circle_perimeter << "cm" << std::endl;
     return circle_perimeter;
 }
