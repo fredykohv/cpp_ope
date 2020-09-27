@@ -1,0 +1,4 @@
+4
+3
+2
+Sum of three average grades is: 9
