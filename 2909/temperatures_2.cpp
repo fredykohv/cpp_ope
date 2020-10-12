@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <../pugixml-1.10/src/pugixml.hpp>
 
 std::string file_name = "temperatures.txt";
 std::ofstream of_file;
