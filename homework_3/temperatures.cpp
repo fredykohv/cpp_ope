@@ -7,6 +7,7 @@
 #include <vector>
 #include <fstream>
 #include <stdio.h>
+#include <bits/stdc++.h>
 
 float tallinn_avg_temperature;
 float london_avg_temperature;
@@ -32,7 +33,7 @@ int el_paso_coldest_temperature = 0;
 int el_paso_warmest_temperature = 0;
 
 std::fstream file;
-std::string el_paso, tallinn, london;
+std::string el_paso, tallinn, london, input;
 
 std::vector<std::string> el_paso_data{};
 std::vector<std::string> tallinn_data{};
@@ -41,6 +42,8 @@ std::vector<std::string> london_data{};
 std::vector<int> el_paso_data_temperatures{};
 std::vector<int> tallinn_data_temperatures{};
 std::vector<int> london_data_temperatures{};
+
+bool running = true;
 
 void read_edit_file()
 {
@@ -140,26 +143,26 @@ void average_temperature()
 
 void warmest_coldest_temperature()
 {
-    tallinn_coldest_temperature = tallinn_data_temperatures[tallinn_data_temperatures.size()];
+    tallinn_coldest_temperature = tallinn_data_temperatures[tallinn_data_temperatures.size() - 1];
     tallinn_warmest_temperature = tallinn_data_temperatures[0];
 
-    london_coldest_temperature = london_data_temperatures[london_data_temperatures.size()];
+    london_coldest_temperature = london_data_temperatures[london_data_temperatures.size() - 1];
     london_warmest_temperature = london_data_temperatures[0];
 
-    el_paso_coldest_temperature = el_paso_data_temperatures[el_paso_data_temperatures.size()];
+    el_paso_coldest_temperature = el_paso_data_temperatures[el_paso_data_temperatures.size() - 1];
     el_paso_warmest_temperature = el_paso_data_temperatures[0];
 }
 
 void average_excluding_extremes()
 {
-    tallinn_data_temperatures.erase(tallinn_data_temperatures.end());
     tallinn_data_temperatures.erase(tallinn_data_temperatures.begin());
+    tallinn_data_temperatures.erase(tallinn_data_temperatures.begin() + (tallinn_data_temperatures.size() - 1));
 
-    london_data_temperatures.erase(london_data_temperatures.end());
     london_data_temperatures.erase(london_data_temperatures.begin());
+    london_data_temperatures.erase(london_data_temperatures.begin() + (london_data_temperatures.size() - 1));
 
-    el_paso_data_temperatures.erase(el_paso_data_temperatures.end());
     el_paso_data_temperatures.erase(el_paso_data_temperatures.begin());
+    el_paso_data_temperatures.erase(el_paso_data_temperatures.begin() + (el_paso_data_temperatures.size() - 1));
 
     for (int i = 0; i < tallinn_data_temperatures.size(); i++)
     {
@@ -183,7 +186,7 @@ void average_excluding_extremes()
     el_paso_avg_without_extremes_temperature = (float)el_paso_temperature_sum_exluding_extremes / el_paso_data_temperatures.size();
 }
 
-s32 main()
+int main()
 {
     read_edit_file();
 
@@ -191,19 +194,44 @@ s32 main()
 
     sort_vectors_to_greatest_to_lowest();
     
+    while (running)
+    {
+        average_temperature();
+        std::cout << tallinn_data[0] << " average temperature is: " << tallinn_avg_temperature << std::endl;
+        std::cout << london_data[0] << " average temperature is: " << london_avg_temperature << std::endl;
+        std::cout << el_paso_data[0] << " average temperature is: " << el_paso_avg_temperature << std::endl;
 
-    /*average_temperature();
-    std::cout << tallinn_data[0] << " average temperature is: " << tallinn_avg_temperature << std::endl;
-    std::cout << london_data[0] << " average temperature is: " << london_avg_temperature << std::endl;
-    std::cout << el_paso_data[0] << " average temperature is: " << el_paso_avg_temperature << std::endl;
+        std::cout << "There is more data... want to see more? yes/no" << std::endl;
+        std::cin >> input;
 
-    warmest_coldest_temperature();
-    std::cout << tallinn_data[0] << " coldest temperature is: " << tallinn_coldest_temperature << " and warmest temperature is: " << tallinn_warmest_temperature << std::endl;
-    std::cout << london_data[0] << " coldest temperature is: " << london_coldest_temperature << " and warmest temperature is: " << london_warmest_temperature << std::endl;
-    std::cout << el_paso_data[0] << " coldest temperature is: " << el_paso_coldest_temperature << " and warmest temperature is: " << el_paso_warmest_temperature << std::endl;*/
+        if (input == "yes")
+        {
+            warmest_coldest_temperature();
+            std::cout << tallinn_data[0] << " coldest temperature is: " << tallinn_coldest_temperature << " and warmest temperature is: " << tallinn_warmest_temperature << std::endl;
+            std::cout << london_data[0] << " coldest temperature is: " << london_coldest_temperature << " and warmest temperature is: " << london_warmest_temperature << std::endl;
+            std::cout << el_paso_data[0] << " coldest temperature is: " << el_paso_coldest_temperature << " and warmest temperature is: " << el_paso_warmest_temperature << std::endl;
+        }
+        else if (input == "no")
+        {
+            running = false;
+            break; 
+        }
 
-    average_excluding_extremes();
-    std::cout << tallinn_data[0] << " average temperature excluding extremes is: " << tallinn_avg_without_extremes_temperature << std::endl;
-    std::cout << london_data[0] << " average temperature excluding extremes is: " << london_avg_without_extremes_temperature << std::endl;
-    std::cout << el_paso_data[0] << " average temperature excluding extremes is: " << el_paso_avg_without_extremes_temperature << std::endl;
+        std::cout << "There is more data... want to see more? yes/no" << std::endl;
+        std::cin >> input;
+
+        if (input == "yes")
+        {
+            average_excluding_extremes();
+            std::cout << tallinn_data[0] << " average temperature excluding extremes is: " << tallinn_avg_without_extremes_temperature << std::endl;
+            std::cout << london_data[0] << " average temperature excluding extremes is: " << london_avg_without_extremes_temperature << std::endl;
+            std::cout << el_paso_data[0] << " average temperature excluding extremes is: " << el_paso_avg_without_extremes_temperature << std::endl;
+            break;
+        }
+        else if (input == "no")
+        {
+            running = false; 
+            break;
+        }
+    }
 }
