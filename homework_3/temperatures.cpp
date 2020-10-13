@@ -1,5 +1,6 @@
 #include "../util/int_types.hpp"
 
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -9,10 +10,14 @@
 
 std::fstream file;
 std::string el_paso, tallinn, london;
+
 std::vector<std::string> el_paso_data{};
 std::vector<std::string> tallinn_data{};
 std::vector<std::string> london_data{};
-int lines = 0;
+
+std::vector<int> el_paso_data_temperatures{};
+std::vector<int> tallinn_data_temperatures{};
+std::vector<int> london_data_temperatures{};
 
 void read_edit_file()
 {
@@ -70,6 +75,34 @@ void read_edit_file()
     file.close();
 }
 
+/* void calculate_average_temperature()
+{
+    std::sort(tallinn_data.begin()+2, tallinn_data.end(), std::greater<int>());
+    std::sort(london_data.begin()+2, london_data.end(), std::greater<int>());
+    std::sort(el_paso_data.begin()+2, el_paso_data.end(), std::greater<int>());
+} */
+
+void change_vector_type()
+{
+    for (int i = 1; i < tallinn_data.size(); i++)
+    {
+        int temperature = atoi(tallinn_data.at(i).c_str());
+        tallinn_data_temperatures.push_back(temperature);
+    }
+
+    for (int i = 1; i < london_data.size(); i++)
+    {
+        int temperature = atoi(london_data.at(i).c_str());
+        london_data_temperatures.push_back(temperature);
+    }
+
+    for (int i = 1; i < el_paso_data.size(); i++)
+    {
+        int temperature = atoi(el_paso_data.at(i).c_str());
+        el_paso_data_temperatures.push_back(temperature);
+    }
+}
+
 s32 main()
 {
     read_edit_file();
@@ -87,5 +120,12 @@ s32 main()
     for (int i = 0; i < el_paso_data.size(); i++)
     {
         std::cout << el_paso_data[i] << std::endl;
+    }
+
+    change_vector_type();
+
+    for (int i = 0; i < el_paso_data_temperatures.size(); i++)
+    {
+        std::cout << el_paso_data_temperatures[i] << std::endl;
     }
 }
