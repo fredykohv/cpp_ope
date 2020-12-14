@@ -56,6 +56,7 @@ class coordinate
             coords.y = y;
         }
 
+        //---- getter/setter ----//
         coordinates get_coords()
         {
             return coords;
@@ -66,6 +67,7 @@ class coordinate
             coords.x = x;
             coords.y = y;
         }
+        //---- ------------- ----//
 
         coordinates sum_of_coords(coordinate c)
         {
@@ -94,12 +96,14 @@ class spatial_coordinate : protected coordinate
             coords.z = z;
         }
 
+        //---- setter ----//
         void set_spatial_coords(float x, float y, float z)
         {
             coords.x = x;
             coords.y = y;
             coords.z = z;
         }
+        //---- ------ ----//
 
         void display_data()
         {
@@ -144,7 +148,7 @@ int main()
     coordinates_1.set_coords(input_x, input_y);
     starting_point(coordinates_1);
     std::cout << "Distance from starting point (0, 0) is: " << distance_from_starting_point << std::endl;
-
+    
     std::vector<coordinate*> coords{&coordinates_1, &coordinates_2, &coordinates_3};
     std::vector<spatial_coordinate*> spatial_coords{&coordinates_4, &coordinates_5};
 

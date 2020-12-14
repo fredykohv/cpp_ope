@@ -20,3 +20,28 @@ Mallid
 * Lisa konstruktorid andmete sisestamiseks ja kopeerimiseks, 
   meetod väljatrükiks. 
 */
+
+#include <math.h>
+#include <iostream>
+#include <vector>
+
+class coordinate
+{
+    public:
+        float x;
+        float y;
+
+        coordinate();
+
+};
+
+coordinate::coordinate()
+{
+    std::cout << "Constructor is working!" << std::endl;
+}
+
+int main()
+{
+
+    return 0;
+}
