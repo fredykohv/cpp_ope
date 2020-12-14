@@ -44,6 +44,14 @@ class coordinate
             coords.y = y;
         }
 
+        coordinate operator + (const coordinate& points)
+        {
+            coordinate coordinate;
+            coordinate.coords.x = coords.x + points.coords.x;
+            coordinate.coords.y = coords.y + points.coords.y;
+            return coordinate;
+        }
+
 };
 
 coordinate::coordinate()
