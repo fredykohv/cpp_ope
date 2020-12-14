@@ -28,10 +28,21 @@ Mallid
 class coordinate
 {
     public:
-        float x;
-        float y;
+        struct coordinates
+        {
+            float x;
+            float y;
+        };
+
+        coordinates coords;
 
         coordinate();
+
+        coordinate(float x, float y)
+        {
+            coords.x = x;
+            coords.y = y;
+        }
 
 };
 

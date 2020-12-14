@@ -29,7 +29,7 @@ int input_amount;
 
 class toiduaine
 {
-    protected:
+    private:
         struct toiduained
         {
             std::string name;
